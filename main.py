@@ -2,7 +2,7 @@
 import os
 import jinja2
 import webapp2
-
+import random
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
@@ -31,6 +31,26 @@ class MainHandler(BaseHandler):
     def get(self):
         return self.render_template("hello.html")
 
+class CalculateHandler(BaseHandler):
+    def post(self):
+        skrito_stevilo = random.randint(1,5)
+
+        if int(self.request.get("poskus1")) != skrito_stevilo and int(self.request.get("poskus1")) <= 5 and int(self.request.get("poskus1")) >= 1:
+            rezultat = "Skrito stevilo ni " + self.request.get("poskus1") + "! Poskusite znova!"
+
+
+        elif int(self.request.get("poskus1")) == skrito_stevilo:
+            rezultat = "Bravo! Uganili ste!"
+
+        else:
+            rezultat = "Prosim vnesite stevilo med 1 in 5!"
+
+
+
+        podatki={"rezultat": rezultat}
+        return self.render_template("rezultat.html", podatki)
+
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
+    webapp2.Route('/rezultat', CalculateHandler),
 ], debug=True)

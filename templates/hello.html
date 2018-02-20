@@ -2,11 +2,20 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>SmartNinja basic Jinja template</title>
+    <title>Ugibaj skrito stevilo</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <h1>Hello, SmartNinja!</h1>
+    <h2>Pozdravljen v zabavni igri Ugibaj skrito stevilo!</h2>
+    <br>
+    <h3>Skrito stevilo se nahaja med 1 in 5.</h3>
+    <br>
+    <form method="post" action="/rezultat">
+        <label for = "input-poskus1">Vnesi stevilo: </label>
+        <input type="text" id="input-poskus1" name="poskus1">
+        <br>
+        <br>
+        <button type="submit">Preveri ali si uganil skrito stevilo!</button>
 </body>
 </html>
